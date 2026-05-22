@@ -269,15 +269,15 @@ const learningPaths: LearningPath[] = [
     prerequisites: ["advanced-features"],
     modules: [
       {
-        id: "vercel-deployment",
-        title: "Vercel部署",
-        description: "在Vercel上部署应用",
+        id: "github-pages-deployment",
+        title: "GitHub Pages 部署",
+        description: "通过 GitHub Actions 自动部署到 GitHub Pages",
         locked: true,
         duration: 120,
         steps: [
-          { id: "vercel-setup", title: "Vercel设置", type: "阅读", duration: 30 },
-          { id: "deployment-config", title: "部署配置", type: "练习", duration: 45 },
-          { id: "custom-domains", title: "自定义域名", type: "练习", duration: 45 },
+          { id: "gh-pages-setup", title: "GitHub Pages 配置", type: "阅读", duration: 30 },
+          { id: "ci-cd-config", title: "CI/CD 工作流配置", type: "练习", duration: 45 },
+          { id: "custom-domains", title: "自定义域名 nexus.yyc3.vip", type: "练习", duration: 45 },
         ],
       },
       {

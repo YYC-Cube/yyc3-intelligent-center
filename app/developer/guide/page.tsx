@@ -56,7 +56,7 @@ export default function DeveloperGuidePage() {
       {
         title: "技术栈",
         content:
-          "• 前端框架: Next.js 14 (App Router)\n• UI组件: shadcn/ui + Tailwind CSS\n• 状态管理: React Context\n• 动画: Framer Motion\n• AI集成: AI SDK + OpenAI\n• 类型系统: TypeScript\n• 构建工具: Turbopack\n• 部署平台: Vercel",
+          "• 前端框架: Next.js 14 (App Router)\n• UI组件: shadcn/ui + Tailwind CSS\n• 状态管理: React Context\n• 动画: Framer Motion\n• AI集成: AI SDK + OpenAI\n• 类型系统: TypeScript\n• 构建工具: Turbopack\n• 部署平台: GitHub Pages",
       },
     ],
     setup: [
@@ -181,17 +181,17 @@ export default function DeveloperGuidePage() {
       {
         title: "部署概述",
         content:
-          "本项目使用 Vercel 进行部署。部署流程包括:\n\n1. 代码推送到 GitHub 仓库\n2. Vercel 自动构建和部署\n3. 环境变量配置\n4. 域名设置",
+          "本项目使用 GitHub Pages 进行静态部署，通过 GitHub Actions CI/CD 自动化构建和发布。部署流程包括:\n\n1. 代码推送到 main 分支\n2. GitHub Actions 自动触发构建\n3. 静态导出生成 (next export)\n4. 自动部署到 GitHub Pages\n5. 自定义域名 nexus.yyc3.vip 生效",
       },
       {
         title: "环境变量",
         content:
-          "部署时需要配置以下环境变量:\n\n• `NEXT_PUBLIC_APP_VERSION`: 应用版本号\n• `NEXT_PUBLIC_BUILD_DATE`: 构建日期\n• `OPENAI_API_KEY`: OpenAI API 密钥\n• `DATABASE_URL`: 数据库连接 URL\n• `AUTH_SECRET`: 认证密钥\n\n这些环境变量可以在 Vercel 项目设置中配置。",
+          "构建时通过 GitHub Actions 配置以下环境变量:\n\n• `NEXT_PUBLIC_APP_VERSION`: 应用版本号\n• `NEXT_PUBLIC_BUILD_DATE`: 构建日期\n\n运行时环境变量在 `.env.local` 中配置，参考 `.env.example` 模板。",
       },
       {
         title: "部署命令",
         content:
-          "```bash\n# 本地构建\nnpm run build\n\n# 本地预览生产构建\nnpm run start\n\n# 部署到 Vercel\nvercel\n\n# 部署到生产环境\nvercel --prod\n```",
+          "```bash\n# 本地构建（静态导出）\npnpm build\n\n# 本地预览\nnpx serve out\n\n# 推送触发自动部署\ngit push origin main\n```",
       },
     ],
     contribution: [

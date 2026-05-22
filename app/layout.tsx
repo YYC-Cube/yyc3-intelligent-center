@@ -14,7 +14,7 @@ import { ErrorBoundary } from "./components/error-handling/error-boundary"
 export const metadata: Metadata = {
   title: "首页 - 言语云集成中心",
   description: "发现、连接并管理强大的集成应用，提升您的业务效率",
-  generator: 'v0.app',
+  generator: 'YYC³ Intelligent Center',
   icons: {
     icon: '/static/logo.svg'
   }
