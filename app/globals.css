@@ -1,0 +1,162 @@
+@import url("./styles/3d-effects.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 98%;
+    --foreground: 224 71% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 10%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 33% 60%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 240 60% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
+    --radius: 0.5rem;
+    --brand-gradient: linear-gradient(135deg, #1e40af 0%, #3b82f6 25%, #6366f1 50%, #8b5cf6 75%, #a855f7 100%);
+    --brand-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+  }
+
+  .dark {
+    --background: 224 71% 8%;
+    --foreground: 210 40% 98%;
+    --card: 224 50% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 50% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 224 71% 10%;
+    --secondary: 217 33% 35%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 217 20% 65%;
+    --accent: 240 45% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 224 76% 94%;
+    --brand-gradient: linear-gradient(135deg, #3b82f6 0%, #6366f1 30%, #8b5cf6 70%, #a855f7 100%);
+    --brand-glow: 0 0 60px rgba(139, 92, 246, 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
+  opacity: 0.8;
+}
+
+/* 全局动画优化 */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow,
+    transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* 3D变换优化 */
+.transform-gpu {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* YYC³ 品牌视觉系统 */
+.brand-gradient {
+  background: var(--brand-gradient);
+}
+
+.brand-glow {
+  box-shadow: var(--brand-glow);
+}
+
+.brand-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 玻璃态效果 */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+/* 品牌动画 */
+@keyframes brand-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.brand-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: brand-shimmer 3s ease-in-out infinite;
+}
+
+/* 蓝紫渐变边框 */
+.brand-border {
+  position: relative;
+}
+
+.brand-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--brand-gradient);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
